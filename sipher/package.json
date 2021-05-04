@@ -1,0 +1,23 @@
+{
+  "name": "sipher",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GooNext/Caesar-cipher-CLI-RS-.git"
+  },
+  "author": "GoNext",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GooNext/Caesar-cipher-CLI-RS-/issues"
+  },
+  "homepage": "https://github.com/GooNext/Caesar-cipher-CLI-RS-#readme",
+  "dependencies": {
+    "commander": "^7.2.0",
+    "through2": "^4.0.2"
+  }
+}
