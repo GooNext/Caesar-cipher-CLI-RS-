@@ -1,17 +1,14 @@
 const fs = require('fs');
 const { exit, stderr } = require('process');
-exports.outputStream = (output) => {
-  console.log(output);
-  if (output) {
-    try {
-      fs.accessSync(output);
-      return fs.createWriteStream(output, {
-        flags: 'a',
-      });
-    } catch (err) {
-      stderr.write('Invalid output file');
-      exit();
-    }
+exports.outputStream = (filePath) => {
+  let output;
+  if (filePath) {
+    output = fs.createWriteStream(filePath, { flags: 'a' });
+    output.on('close', function () {
+      fs.createWriteStream(filePath, { flags: 'a' }).write(os.EOL);
+    });
+  } else {
+    output = process.stdout;
   }
-  return process.stdout;
+  return output;
 };

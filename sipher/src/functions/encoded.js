@@ -1,4 +1,5 @@
 exports.encoded = (shift) => {
+  console.log(shift);
   return function (chunk, enc, callback) {
     for (let i = 0; i < chunk.length; i++) {
       if (chunk[i] > 61 && chunk[i] < 91) {

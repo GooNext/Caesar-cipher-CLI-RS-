@@ -1,8 +1,12 @@
 const fs = require('fs');
 
 exports.inputStream = (input) => {
+  let inputStream;
   if (input) {
-    return fs.createReadStream(input, 'utf8');
+    inputStream = fs.createReadStream(input);
+  } else {
+    inputStream = process.stdin;
+    console.log('Type your text');
   }
-  return process.stdin;
+  return inputStream;
 };

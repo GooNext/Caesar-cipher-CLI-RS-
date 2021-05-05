@@ -20,19 +20,19 @@ program.parse(process.argv);
 const action = program.action;
 const shift = program.shift;
 
-console.log(action, shift);
-
 pipeline(
   inputStream(program.input),
   through2(
-    action.toString() === 'encoded'
+    action.toString() === 'encode' && +shift >= 0
       ? encoded(+shift > 26 ? (shift % 26).toFixed() : shift)
-      : decoded(+shift > 26 ? (shift % 26).toFixed() : shift)
+      : decoded(
+          +shift.replace('-', '') > 26
+            ? (shift.replace('-', '') % 26).toFixed()
+            : shift.replace('-', '')
+        )
   ),
   outputStream(program.output),
   (err) => {
     exitStream(err);
   }
 );
-
-console.log(action, shift);
