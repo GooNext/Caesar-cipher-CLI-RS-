@@ -1,14 +1,14 @@
+const os = require('os');
 const fs = require('fs');
-const { exit, stderr } = require('process');
-exports.outputStream = (filePath) => {
-  let output;
-  if (filePath) {
-    output = fs.createWriteStream(filePath, { flags: 'a' });
-    output.on('close', function () {
-      fs.createWriteStream(filePath, { flags: 'a' }).write(os.EOL);
+exports.outputStream = (path) => {
+  let reuslt;
+  if (path) {
+    reuslt = fs.createWriteStream(path, { flags: 'a' });
+    reuslt.on('close', function () {
+      fs.createWriteStream(path, { flags: 'a' }).write(os.EOL);
     });
   } else {
-    output = process.stdout;
+    reuslt = process.stdout;
   }
-  return output;
+  return reuslt;
 };

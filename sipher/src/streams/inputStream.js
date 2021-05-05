@@ -1,12 +1,12 @@
 const fs = require('fs');
 
-exports.inputStream = (input) => {
-  let inputStream;
-  if (input) {
-    inputStream = fs.createReadStream(input);
+exports.inputStream = (path) => {
+  let result;
+  if (path) {
+    result = fs.createReadStream(path);
   } else {
-    inputStream = process.stdin;
+    result = process.stdin;
     console.log('Type your text');
   }
-  return inputStream;
+  return result;
 };
