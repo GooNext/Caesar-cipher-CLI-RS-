@@ -1,4 +1,7 @@
+const fs = require('fs');
+const { exit, stderr } = require('process');
 exports.outputStream = (output) => {
+  console.log(output);
   if (output) {
     try {
       fs.accessSync(output);
@@ -6,7 +9,7 @@ exports.outputStream = (output) => {
         flags: 'a',
       });
     } catch (err) {
-      process.stderr.write('Invalid output file');
+      stderr.write('Invalid output file');
       exit();
     }
   }

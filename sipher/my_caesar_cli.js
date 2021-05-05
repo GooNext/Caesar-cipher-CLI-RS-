@@ -20,6 +20,8 @@ program.parse(process.argv);
 const action = program.action;
 const shift = program.shift;
 
+console.log(action, shift);
+
 pipeline(
   inputStream(program.input),
   through2(
