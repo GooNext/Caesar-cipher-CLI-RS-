@@ -20,6 +20,9 @@ program.parse(process.argv);
 const action = program.action;
 const shift = program.shift;
 
+if (shift && isNaN(Number(shift))) console.log('Shift must be integer');
+if (!shift) return console.log('Shift is required param');
+
 pipeline(
   inputStream(program.input),
   through2(
